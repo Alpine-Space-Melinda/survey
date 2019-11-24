@@ -742,7 +742,7 @@ export const surveyModel = {
      "type": "dropdown",
      "name": "QF2GB2",
      "visible": false,
-     "visibleIf": "(!{source} or {source} == 'de') and {QF1} == \"de\" and {QF2GB} == \"A2\"",
+     "visibleIf": "((!{source}) or {source} == 'de') and {QF1} == \"de\" and {QF2GB} == \"A2\"",
      "title": {
       "default": "Could you precise in which Landkreis?",
       "de": "In welchem Landkreis liegt Ihr Wohnort?"
@@ -1731,7 +1731,7 @@ export const surveyModel = {
      "type": "text",
      "name": "QF3",
      "visible": false,
-     "visibleIf": "{source} != 'at' and (\r\n({QF2FD} notempty and !([\"A11\", \"A13\"] anyof {QF2FD}))\r\nor\r\n({QF2AR} notempty and !([\"A1\", \"A2\"] anyof {QF2AR}))\r\nor\r\n({QF2GB2} notempty and {QF2GB2} != \"19\")\r\nor\r\n({QFSW1} notempty and !([\"A6\", \"A10\", \"A12\", \"A19\"] anyof {QFSW1}))\r\nor\r\n{QFSW1} == \"A2\"\r\nor\r\n({QF2SL} notempty and {QF2SL} != \"7\")\r\n)",
+     "visibleIf": "{source} != 'at' and (\r\n({QF2FD} notempty and !([\"A11\", \"A13\"] anyof {QF2FD}))\r\nor\r\n({QF2AR} notempty and !([\"A1\", \"A2\"] anyof {QF2AR}))\r\nor\r\n({QF2GB2} notempty and {QF2GB2} != \"19\")\r\nor\r\n({QFSW1} notempty and !([\"A6\", \"A10\", \"A12\", \"A19\"] anyof {QFSW1}))\r\nor\r\n{QFSW1} == \"A2\"\r\n)",
      "title": {
       "default": "Could you please specify your postal code?",
       "de": "Bitte nennen Sie uns die Postleitzahl Ihres Wohnortes.",
@@ -1751,7 +1751,7 @@ export const surveyModel = {
      "type": "checkbox",
      "name": "EQ1AU",
      "visible": false,
-     "visibleIf": "{QF1} == \"at\" or {QF1} == \"li\" or ({QF1} == \"de\" and {QF2GB} == \"A2\") or ({QF1} == \"ch\" and ({QFSW1} == \"A10\" or {QFSW1} == \"A19\"))",
+     "visibleIf": "((!{source}) or {source} == \"at\") and ({QF1} == \"at\" or {QF1} == \"li\" or ({QF1} == \"de\" and {QF2GB} == \"A2\") or ({QF1} == \"ch\" and ({QFSW1} == \"A10\" or {QFSW1} == \"A19\")))",
      "title": {
       "default": "In the Vorarlberg Region do you usually carry out any of the following activities?",
       "de": "Welche dieser Aktivitäten führen Sie regelmäßig in Vorarlberg aus?",
@@ -1959,7 +1959,7 @@ export const surveyModel = {
      "type": "checkbox",
      "name": "EQ1SL",
      "visible": false,
-     "visibleIf": "{QF1} == 'si'",
+     "visibleIf": "{QF1} == 'si' and {QF2SL} == '7'",
      "title": {
       "default": "In the city of Maribor do you usually carry out any of the following activities?",
       "sl": "Ali v mestu Maribor običajno izvajate katere od naslednjih aktivnosti?"
@@ -2023,7 +2023,7 @@ export const surveyModel = {
      "type": "checkbox",
      "name": "EQ1SW1",
      "visible": false,
-     "visibleIf": "(!{source} or {source} == 'ch') and {QFSW1} == 'A6'",
+     "visibleIf": "((!{source}) or {source} == 'ch') and ({QFSW1} == 'A6' or {QFSW1} == 'A10' or {QFSW1} == 'A12' or {QFSW1} == 'A19')",
      "title": {
       "default": "In the Canton of Berne do you usually carry out any of the following activities?",
       "de": "Welche dieser Aktivitäten führen Sie in ihrer Wohngemeinde regelmässig aus?",
@@ -3204,7 +3204,7 @@ export const surveyModel = {
       "it": "Di quali dei seguenti servizi di mobilità hai sentito parlare?",
       "de": "Von welche der folgenden Mobilitätslösungen haben Sie schon einmal gehört?",
       "de-ch": "Von welche der folgenden Mobilitätslösungen haben Sie schon einmal gehört?",
-      "de-at": "Von welcheR der folgenden Mobilitätslösungen/Mobilitätsangebote haben Sie schon einmal gehört?",
+      "de-at": "Von welche der folgenden Mobilitätslösungen/Mobilitätsangebote haben Sie schon einmal gehört?",
       "sl": "Za katere od naslednjih storitev mobilnosti ste že slišali?",
       "fr": "Desquelles de ces solutions de mobilité avez vous entendu parler?"
      },
@@ -3460,9 +3460,9 @@ export const surveyModel = {
      "description": {
       "default": "* to have access to means that you can easily use it even if you don't own it (for example: \"my parents own a car I can use if I want/need\")",
       "it": "* per \"Avere accesso\" si intende che puoi utilizzarli facilmente anche senza averne il diretto possesso (ad esempio: \"i miei genitori posseggono un'auto che posso utilizzare in caso ne avessi bisogno\")",
-      "de": " *Zugriff bedeutet, dass eine (Mit)Nutzung möglich ist, auch wenn einem das Transportmittel nicht persönlich gehört (z. B.: \"Meine Eltern besitzen ein Auto, das ich benutzen kann, wenn ich es will/benötige\").",
-      "de-at": "*Zugriff bedeutet, dass eine (Mit)Nutzung möglich ist, auch wenn einem das Transportmittel nicht persönlich gehört (z. B.: \"Meine Eltern besitzen ein Auto, das ich benutzen kann, wenn ich es will/benötige\").",
-      "de-ch": "*Zugriff bedeutet, dass eine (Mit)Nutzung möglich ist, auch wenn einem das Transportmittel nicht persönlich gehört (z. B.: \"Meine Eltern besitzen ein Auto, das ich benutzen kann, wenn ich es will/benötige\").",
+      "de": "*Zugriff bedeutet, dass eine (Mit)Nutzung möglich ist, auch wenn einem das Transportmittel nicht persönlich gehört (z. B.: \"Meine Eltern besitzen ein Auto, das ich benutzen kann, wenn ich es will/benötige\")",
+      "de-at": "*Zugriff bedeutet, dass eine (Mit)Nutzung möglich ist, auch wenn einem das Transportmittel nicht persönlich gehört (z. B.: \"Meine Eltern besitzen ein Auto, das ich benutzen kann, wenn ich es will/benötige\")",
+      "de-ch": "*Zugriff bedeutet, dass eine (Mit)Nutzung möglich ist, auch wenn einem das Transportmittel nicht persönlich gehört (z. B.: \"Meine Eltern besitzen ein Auto, das ich benutzen kann, wenn ich es will/benötige\")",
       "sl": "Imeti dostop pomeni, da jih lahko enostavno uporabljate, tudi če jih nimate v lasti (na primer: »Moji starši imajo avto, ki ga lahko uporabim, če ga hočem/potrebujem.«)",
       "fr": "* Avoir accès signifie que vous pouvez facilement l'utiliser même si vous n'en avez pas la propriété"
      },
@@ -3531,10 +3531,10 @@ export const surveyModel = {
        "text": {
         "default": "Scooter/skateboard/hoverboard",
         "it": "Monopattino/skateboard/hoverboard",
-        "de": "Skiro/rolka/hoverboard",
+        "de": "Roller/Skateboard/Hoverboard",
         "de-at": "(E-)Scooter/Skateboard/Hoverboard",
         "de-ch": "Roller/Skateboard/Hoverboard",
-        "sl": "Skuter/rolka/hoverboard",
+        "sl": "Skiro/rolka/hoverboard",
         "fr": "Trotinette/skateboard/hoverboard"
        },
        "enableIf": "{Q6} anyof \"5\" or !({Q6} anyof \"9\")"
@@ -3898,7 +3898,7 @@ export const surveyModel = {
     {
      "type": "radiogroup",
      "name": "Q6DRIVEL",
-     "visibleIf": "{QF1} == 'ch'",
+     "visibleIf": "((!{source}) or {source} == 'ch') and {QF1} == 'ch'",
      "title": {
       "default": "Do you have a driving licence?",
       "de-ch": "Hast Du einen Führerschein?",
@@ -4787,7 +4787,7 @@ export const surveyModel = {
     {
      "type": "radiogroup",
      "name": "PS4dot1",
-     "visibleIf": "{QF1} == \"ch\"",
+     "visibleIf": "((!{source}) or {source} == 'ch') and {QF1} == \"ch\"",
      "title": {
       "default": "Haben Sie bis zum heutigen Zeitpunkt von diesem Angebot gehört?",
       "it": "Utilizzi la bicicletta tanto quanto vorresti durante i tuoi spostamenti quotidiani?"
@@ -4814,7 +4814,7 @@ export const surveyModel = {
    "name": "PS2",
    "elements": [
     {
-     "type": "radiogroup",
+     "type": "checkbox",
      "name": "S2Q2",
      "visibleIf": "[\"16\", \"21\", \"30\", \"31\", \"34\", \"48\"] contains {QF2ITUTI}",
      "title": {
@@ -5006,7 +5006,7 @@ export const surveyModel = {
     {
      "type": "radiogroup",
      "name": "_ch_Q11",
-     "visibleIf": "{QF1} == \"ch\"",
+     "visibleIf": "((!{source}) or {source} == 'ch') and {QF1} == \"ch\"",
      "title": {
       "default": "What is your age?",
       "it": "Quanti anni hai?",
@@ -5060,7 +5060,7 @@ export const surveyModel = {
      "type": "radiogroup",
      "name": "PS4dot3",
      "visibleIf": "({_ch_Q11} != \"1\" and {_ch_Q11}) and {PS4dot1} == \"1\" and {Q6DRIVEL} == \"1\"",
-     "title": "Haben Sie bis zum heutigen Zeitpunkt bereits dieses Angebot als Fahrer/In genutzt?",
+     "title": "Haben Sie bis zum heutigen Zeitpunkt bereits dieses Angebot als <u>Fahrer/In</u> genutzt?",
      "isRequired": true,
      "choices": [
       {
@@ -5176,7 +5176,7 @@ export const surveyModel = {
      "type": "radiogroup",
      "name": "PS4dot4",
      "visibleIf": "{PS4dot3} == \"1\"",
-     "title": "Wie häufig nutzen Sie das Angebot als Fahrer/In bislang?",
+     "title": "Wie häufig nutzen Sie das Angebot <u>als Fahrer/In</u> bislang?",
      "isRequired": true,
      "choices": [
       {
@@ -5230,7 +5230,7 @@ export const surveyModel = {
         "default": "Yes without conditions",
         "sl": "Prezpogojno da"
        },
-       "enableIf": "{PSq4} anyof \"1\" or !({PSq4} anyof \"4\" or {PSq4} anyof \"5\")"
+       "enableIf": "{PSq4} anyof \"1\" or {PSq4.length} == 0"
       },
       {
        "value": "2",
@@ -5238,7 +5238,7 @@ export const surveyModel = {
         "default": "Yes, if the frequency would be higher and time tables harmonised",
         "sl": "Da, v kolikor bi bili usklajeni vozni redi in večja frekvenca mestnega prometa"
        },
-       "enableIf": "{PSq4} anyof \"2\" or !({PSq4} anyof \"4\" or {PSq4} anyof \"5\")"
+       "enableIf": "{PSq4} anyof \"2\" or !({PSq4} anyof \"1\" or {PSq4} anyof \"5\")"
       },
       {
        "value": "3",
@@ -5246,7 +5246,7 @@ export const surveyModel = {
         "default": "Yes, if bus will be cheaper",
         "sl": "Da, če bi bilo ceneje"
        },
-       "enableIf": "{PSq4} anyof \"3\" or !({PSq4} anyof \"4\" or {PSq4} anyof \"5\")"
+       "enableIf": "{PSq4} anyof \"3\" or !({PSq4} anyof \"1\" or {PSq4} anyof \"5\")"
       },
       {
        "value": "4",
@@ -5254,7 +5254,7 @@ export const surveyModel = {
         "default": "Public transport is irrelevant because of my residential address.",
         "sl": "Javni prevoz zaradi mesta bivanja ne pride v poštev"
        },
-       "enableIf": "{PSq4} anyof \"4\" or {PSq4.length} == 0"
+       "enableIf": "{PSq4} anyof \"4\" or !({PSq4} anyof \"1\" or {PSq4} anyof \"5\")"
       },
       {
        "value": "5",
@@ -5309,7 +5309,7 @@ export const surveyModel = {
      "type": "radiogroup",
      "name": "PS4dot5",
      "visibleIf": "{PS4dot3} == \"1\"",
-     "title": "Was sind Ihre Beweggründe, als Fahrer/in weitere Mitfahrende mit Hilfe von Taxito mitzunehmen?",
+     "title": "Was sind Ihre Beweggründe, <u>als Fahrer/In</u> weitere Mitfahrende mit Hilfe von Taxito mitzunehmen?",
      "description": "Bitte zutreffendes ankreuzen (Mehrfachantworten möglich)",
      "isRequired": true,
      "choices": [
@@ -5503,7 +5503,7 @@ export const surveyModel = {
      "type": "radiogroup",
      "name": "PS4dot7",
      "visibleIf": "{PS4dot6} == \"1\"",
-     "title": "Was ist der Grund, weshalb Sie in Zukunft beabsichtigen als Fahrer/in, das Angebot weniger als bisher zu nützen?",
+     "title": "Was ist der Grund, weshalb Sie in Zukunft beabsichtigen als Fahrer/in, das Angebot <u>weniger als bisher</u> zu nützen?",
      "description": "Bitte zutreffendes ankreuzen (Mehrfachantworten möglich)",
      "isRequired": true,
      "choices": [
@@ -5567,7 +5567,7 @@ export const surveyModel = {
      "type": "radiogroup",
      "name": "PS4dot8",
      "visibleIf": "{PS4dot1} == \"1\"",
-     "title": "Haben Sie bis zum heutigen Zeitpunkt bereits dieses Angebot als Mitfahrer/In genutzt?",
+     "title": "Haben Sie bis zum heutigen Zeitpunkt bereits dieses Angebot als <u>Mitfahrer/In</u> genutzt?",
      "isRequired": true,
      "choices": [
       {
@@ -5589,7 +5589,7 @@ export const surveyModel = {
      "type": "radiogroup",
      "name": "PS4dot9",
      "visibleIf": "{PS4dot8} == \"1\"",
-     "title": "Wie häufig nutzen Sie das Angebot Mitfahrer/In bislang?",
+     "title": "Wie häufig nutzen Sie das Angebot <u>Mitfahrer/In</u> bislang?",
      "choices": [
       {
        "value": "1",
@@ -5722,7 +5722,7 @@ export const surveyModel = {
      "type": "checkbox",
      "name": "PS4dot12",
      "visibleIf": "{PS4dot8} == \"1\"",
-     "title": "Was waren Ihre Gründe für Ihre Nutzung des Angebots als Mitfahrer/in?",
+     "title": "Was waren Ihre Gründe für <u>Ihre Nutzung</u> des Angebots als Mitfahrer/in?",
      "description": "Bitte zutreffendes ankreuzen (Mehrfachantworten möglich)",
      "isRequired": true,
      "hasOther": true,
@@ -5794,7 +5794,7 @@ export const surveyModel = {
      "type": "radiogroup",
      "name": "PS4dot14",
      "visibleIf": "{PS4dot8} == \"1\" and {PS4dot13} == \"1\"",
-     "title": "Was ist der Grund, weshalb Sie in Zukunft beabsichtigen als Mitfahrer/in, das Angebot weniger als bisher zu nützen?",
+     "title": "Was ist der Grund, weshalb Sie in Zukunft beabsichtigen als Mitfahrer/in, das Angebot <u>weniger als bisher</u> zu nützen?",
      "isRequired": true,
      "hasOther": true,
      "choices": [
@@ -5831,10 +5831,10 @@ export const surveyModel = {
    "name": "PS15",
    "elements": [
     {
-     "type": "radiogroup",
+     "type": "checkbox",
      "name": "PS4dot15",
      "visibleIf": "{PS4dot1} == \"1\" and {PS4dot8} == \"2\"",
-     "title": "Was sind die Gründe dafür, dass Sie das Angebot als Mitfahrer/in nicht nutzen?",
+     "title": "Was sind die Gründe dafür, dass Sie das Angebot als Mitfahrer/in <u>nicht nutzen</u>?",
      "description": "Bitte zutreffendes ankreuzen (Mehrfachantworten möglich)",
      "isRequired": true,
      "hasOther": true,
@@ -5887,7 +5887,7 @@ export const surveyModel = {
      "type": "radiogroup",
      "name": "PS4dot16",
      "visibleIf": "{PS4dot3} == \"2\"",
-     "title": "Was sind die Gründe dafür, dass Sie das Angebot als Fahrer/in nicht nutzen?",
+     "title": "Was sind die Gründe dafür, dass Sie das Angebot als Fahrer/in <u>nicht nutzen</u>?",
      "description": "Bitte zutreffendes ankreuzen (Mehrfachantworten möglich)",
      "isRequired": true,
      "choices": [
@@ -5921,7 +5921,7 @@ export const surveyModel = {
     {
      "type": "comment",
      "name": "PS4dot17",
-     "visibleIf": "{QF1} == \"ch\"",
+     "visibleIf": "((!{source}) or {source} == 'ch') and {QF1} == \"ch\"",
      "title": "Haben Sie weitere Kommentare zum Angebot von Taxito? Dann können Sie hier Ihre Erfahrungen, Kritiken und Wünsche anbringen.",
      "isRequired": true
     }

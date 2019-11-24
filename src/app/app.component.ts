@@ -18,6 +18,7 @@ import { slovenianSurveyStrings } from './i18n/surveyjs/slovenian';
 import { austrianGermanSurveyStrings } from './i18n/surveyjs/austrian-german';
 import { swissGermanSurveyStrings } from './i18n/surveyjs/swiss-german';
 import { Title } from '@angular/platform-browser';
+import * as showdown from 'showdown';
 
 import Velocity from 'velocity-animate';
 
@@ -100,7 +101,7 @@ export class AppComponent implements OnInit {
 		surveyLocalization.localeNames["de-ch"] = "swiss german";
     }
     
-    private parseSource(){
+    private parseSource(): string {
         // Admitted values
         let values = ['at', 'fr', 'de', 'it', 'si', 'ch'];
         
@@ -122,7 +123,7 @@ export class AppComponent implements OnInit {
         return null;
     }
     
-    private parseChannel(){
+    private parseChannel(): string {
         // Parse
         return new URLSearchParams(window.location.search).get('channel') || null;
     }
@@ -163,6 +164,12 @@ export class AppComponent implements OnInit {
                 }
             });
 			
+			// Hide question QF1 for slovenian pilot
+			survey.onAfterRenderQuestion.add((survey, question) => {
+				if (question.question.name == 'QF1' && this.source == 'si'){
+					question.htmlElement.style.display = 'none';
+				}
+			});
 			// Fix questions style
 			survey.onAfterRenderQuestion.add((survey, question) => {
 				// Make titles bolder
@@ -196,20 +203,26 @@ export class AppComponent implements OnInit {
 						let head = <HTMLElement>(matrixHeads.item(0));
 						let labels = head.getElementsByTagName('th');
 						
-						if (labels.length > 0){
-							labels.item(0).prepend(document.createElement('br'));
-							let text = document.createElement('span');
-							text.innerText = "ni urejeno";
-							text.style.fontWeight = 'normal';
-							labels.item(0).prepend(text);
-						}
-						
-						if (labels.length > 1){
-							labels.item(labels.length - 1).prepend(document.createElement('br'));
-							let text = document.createElement('span');
-							text.innerText = "dobro urejeno";
-							text.style.fontWeight = 'normal';
-							labels.item(labels.length - 1).prepend(text);
+						for (let i = 0; i < labels.length; i++){
+							let label = labels.item(i);
+							label.style.fontSize = '0.8rem';
+							
+							if (i == 0){
+								label.prepend(document.createElement('br'));
+								let text = document.createElement('span');
+								text.innerText = "ni urejeno";
+								text.style.textTransform = 'uppercase';
+								text.style.fontSize = '1rem';
+								label.prepend(text);
+							}
+							else if (i == labels.length - 1){
+								label.prepend(document.createElement('br'));
+								let text = document.createElement('span');
+								text.innerText = "dobro urejeno";
+								text.style.textTransform = 'uppercase';
+								text.style.fontSize = '1rem';
+								label.prepend(text);
+							}
 						}
 					}
 				}
@@ -229,9 +242,6 @@ export class AppComponent implements OnInit {
                 window.scrollTo(0, 0);
             });
             survey.showProgressBar = "top";
-			
-			// Set the source as a survey variable
-			survey.setValue("source", this.source);
 			
 			// Hide questions which are normally shown when the user is located out of the pilot area
 			let hiddenQuestions: IQuestion[] = [];
@@ -261,7 +271,21 @@ export class AppComponent implements OnInit {
 					q.question.errors = [];
 				}
 			});
-            
+
+			// Create showdown markdown converter
+			var converter = new showdown.Converter();
+			survey
+			    .onTextMarkdown
+			    .add((survey, options) => {
+			        //convert the mardown text to html
+			        var str = converter.makeHtml(options.text);
+			        //remove root paragraphs <p></p>
+			        str = str.substring(3);
+			        str = str.substring(0, str.length - 4);
+			        //set html
+			        options.html = str;
+			    });
+
             // Doc: https://surveyjs.io/Examples/Library/?id=survey-customcss&platform=jQuery&theme=default
 			let surveyElementId = "surveyElement";
             SurveyNG.render(surveyElementId , {
@@ -280,11 +304,14 @@ export class AppComponent implements OnInit {
                     progress: "progress center-block mx-auto mb-4 survey-progress"
                 },
             });
+
+			// Set the source as a survey variable
+			survey.setValue("source", this.source);
 			
 			// Preselect the country in case of slovenian pilot and hide country selection
 			if (this.source == 'si'){
 				survey.setValue("QF1", this.source);
-				survey.getQuestionByName("QF1").visible = false;
+				//survey.getQuestionByName("QF1").visible = false; // Cannot do this otherwise the response data are not returned... don't know why???
             }
 
 			// Init animations

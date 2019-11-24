@@ -12,7 +12,7 @@ export const data = {
         "TITLE": "Herzlich willkommen bei Melinda!",
 		"LEAD": "Das <strong>MELINDA</strong> - <strong>M</strong>obility <strong>E</strong>cosystem for <strong>L</strong>ow-carbon and <strong>IN</strong>novative mo<strong>D</strong>al shift in the <strong>A</strong>lps - <strong>Projekt</strong> will ein besseres Verständnis der Mobilitätsgewohnheiten und Präferenzen des täglichen Lebens der Menschen generieren.",
 		"DESCRIPTION": "Mit dieser Umfrage möchten wir Ihre Einstellungen sammeln und Ihnen einige Tipps geben, wie Sie mit den ökologischen Herausforderungen umgehen können, mit denen wir uns alle dringend befassen sollten.",
-		"TIME_REQUIREMENTS": "Diese Umfrage benötigt nur 10 Minuten Ihrer Zeit.",
+		"TIME_REQUIREMENTS": "Diese Umfrage benötigt nur 7-8 Minuten Ihrer Zeit.",
 		"LEGAL": {
 			"TITLE": "Haftungsausschluss",
 			"INTRO": "Sie sind eingeladen, an einer Forschungsumfrage des MELINDA-Projekts teilzunehmen durchgeführt wird.",
