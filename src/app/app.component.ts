@@ -19,6 +19,8 @@ import { austrianGermanSurveyStrings } from './i18n/surveyjs/austrian-german';
 import { swissGermanSurveyStrings } from './i18n/surveyjs/swiss-german';
 import { Title } from '@angular/platform-browser';
 
+import Velocity from 'velocity-animate';
+
 @Component( {
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -261,7 +263,8 @@ export class AppComponent implements OnInit {
 			});
             
             // Doc: https://surveyjs.io/Examples/Library/?id=survey-customcss&platform=jQuery&theme=default
-            SurveyNG.render( "surveyElement", {
+			let surveyElementId = "surveyElement";
+            SurveyNG.render(surveyElementId , {
                 model: survey,
                 css: {
                     pageDescription: "text-justify px-4 mb-3",
@@ -283,6 +286,41 @@ export class AppComponent implements OnInit {
 				survey.setValue("QF1", this.source);
 				survey.getQuestionByName("QF1").visible = false;
             }
+
+			// Init animations
+			var doAnimantion = true;
+			var animationDuration = 200;
+			survey
+			    .onCurrentPageChanging
+			    .add((sender, options) => {
+			        if (!doAnimantion) 
+			            return;
+			        options.allowChanging = false;
+			        setTimeout(function () {
+			            doAnimantion = false;
+			            sender.currentPage = options.newCurrentPage;
+			            doAnimantion = true;
+			        }, animationDuration);
+	    			Velocity(document.getElementById(surveyElementId), {opacity: 0}, {duration: animationDuration});
+			    });
+			survey
+			    .onCurrentPageChanged
+			    .add(sender => {
+			        Velocity(document.getElementById(surveyElementId), {opacity: 1}, {duration: animationDuration});
+			    });
+			survey
+			    .onCompleting
+			    .add((sender, options) => {
+			        if (!doAnimantion) 
+			            return;
+			        options.allowComplete = false;
+			        setTimeout(function () {
+			            doAnimantion = false;
+			            sender.doComplete();
+			            doAnimantion = true;
+			        }, animationDuration);
+			        Velocity(document.getElementById(surveyElementId), {opacity: 0}, {duration: animationDuration});
+			    });
 			
             this.status = SurveyStatus.READY;
         }
@@ -419,7 +457,7 @@ export class AppComponent implements OnInit {
 			});
 		});
 	}
-    
+	
 }
 
 enum SurveyStatus {
