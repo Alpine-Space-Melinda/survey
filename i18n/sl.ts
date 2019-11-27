@@ -34,12 +34,9 @@ export const data = {
 		"THANKS": "Hvala, ker ste izpolnili anketo!",
 		"SCORE": "Vaša stopnja okoljske ozaveščenosti in skladnosti je:",
 		"LEVEL": {
-			"EXCELLENT": "Odlično",
 			"VERY_GOOD": "Zelo dobro",
 			"GOOD": "Dobro",
-			"AVERAGE": "Povprečno",
-			"LOW": "Svoj rezultat bi lahko izboljšali",
-			"VERY_LOW": "Nikoli ni prepozno začeti"
+			"LOW": "Svoj rezultat bi lahko izboljšali"
 		},
 		"TEXT": "Ker pa ste prispevali k temu projektu, ste že «naredili korak naprej»",
 		"SOLUTIONS": {

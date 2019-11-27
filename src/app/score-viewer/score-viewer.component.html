@@ -3,12 +3,9 @@
 <p *ngIf="scoreValid" class="score-level-intro text-center">{{ "SCORE_VIEWER.SCORE" | translate }}</p>
 
 <div class="score-levels my-4" *ngIf="scoreValid">
-	<div class="score-level level-1" [ngClass]="{ 'level-active': score >= 12 }">{{ "SCORE_VIEWER.LEVEL.EXCELLENT" | translate }}</div>
-	<div class="score-level level-2" [ngClass]="{ 'level-active': (score >= 10 && score < 12) }">{{ "SCORE_VIEWER.LEVEL.VERY_GOOD" | translate }}</div>
-	<div class="score-level level-3" [ngClass]="{ 'level-active': (score >= 8 && score < 10) }">{{ "SCORE_VIEWER.LEVEL.GOOD" | translate }}</div>
-	<div class="score-level level-4" [ngClass]="{ 'level-active': (score >= 6 && score < 8) }">{{ "SCORE_VIEWER.LEVEL.AVERAGE" | translate }}</div>
-	<div class="score-level level-5" [ngClass]="{ 'level-active': (score >= 4 && score < 6) }">{{ "SCORE_VIEWER.LEVEL.LOW" | translate }}</div>
-	<div class="score-level level-6" [ngClass]="{ 'level-active': (score < 4) }">{{ "SCORE_VIEWER.LEVEL.VERY_LOW" | translate }}</div>
+	<div class="score-level level-3" [ngClass]="{ 'level-active': (score >= 10) }">{{ "SCORE_VIEWER.LEVEL.VERY_GOOD" | translate }}</div>
+	<div class="score-level level-2" [ngClass]="{ 'level-active': (score >= 6 && score < 10) }">{{ "SCORE_VIEWER.LEVEL.GOOD" | translate }}</div>
+	<div class="score-level level-1" [ngClass]="{ 'level-active': (score < 6) }">{{ "SCORE_VIEWER.LEVEL.LOW" | translate }}</div>
 </div>
 
 <h5 *ngIf="scoreValid" class="score-level-cta my-4 text-center">{{ "SCORE_VIEWER.TEXT" | translate }}</h5>

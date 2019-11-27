@@ -34,12 +34,9 @@ export const data = {
 		"THANKS": "Vielen Dank, dass Sie die Umfrage ausgefüllt haben!",
 		"SCORE": "Ihr Grad an Umweltbewusstsein ist:",
 		"LEVEL": {
-			"EXCELLENT": "Hervorragend",
 			"VERY_GOOD": "Sehr gut",
 			"GOOD": "Gut",
-			"AVERAGE": "Durchschnittlich",
-			"LOW": "Sie könnten Ihre Punktzahl verbessern",
-			"VERY_LOW": "Es ist Zeit aktiv zu werden"
+			"LOW": "Sie könnten Ihre Punktzahl verbessern"
 		},
 		"TEXT": "Aber da Sie an diesem Projekt mitgewirkt haben, sind Sie bereits \"einen weiteren Schritt in die richtige Richtung gegangen\"",
 		"SOLUTIONS": {

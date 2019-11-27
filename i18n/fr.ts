@@ -34,12 +34,9 @@ export const data = {
 		"THANKS": "Merci d'avoir rempli le questionnaire!",
 		"SCORE": "Votre niveau de sensibilisation à l'environnement et de respect environnemental est de:",
 		"LEVEL": {
-			"EXCELLENT": "Excellent",
 			"VERY_GOOD": "Trés bon",
 			"GOOD": "Bon",
-			"AVERAGE": "Moyen",
-			"LOW": "Vous pouvez faire mieux",
-			"VERY_LOW": "C'est le bon moment pour commencer"
+			"LOW": "Vous pouvez faire mieux"
 		},
 		"TEXT": "Mais puisque vous avez contribué à ce projet, vous avez déjà avancé donc vous méritez un point supplémentaire!",
 		"SOLUTIONS": {

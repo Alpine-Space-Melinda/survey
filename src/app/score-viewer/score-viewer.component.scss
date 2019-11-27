@@ -20,23 +20,15 @@
 		line-height: 1.2;
 		
 		&.level-1 {
-			background-color: #66b42d;
-		}
-		&.level-2 {
-			background-color: #8cbe21;
-		}
-		&.level-3 {
-			background-color: #e2de09;
-		}
-		&.level-4 {
-			background-color: #f8ad13;
-		}
-		&.level-5 {
-			background-color: #f07b07;
-		}
-		&.level-6 {
 			background-color: #e84c19;
 		}
+		&.level-2 {
+			background-color: #e2de09;
+		}
+		&.level-3 {
+			background-color: #8cbe21;
+		}
+		
 		&.level-active {
 			width: 250px;
 			height: 55px;

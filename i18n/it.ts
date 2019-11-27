@@ -34,19 +34,16 @@ export const data = {
 		"THANKS": "Grazie per aver risposto alle nostre domande!",
 		"SCORE": "Il tuo livello di consapevolezza ambientale è:",
 		"LEVEL": {
-			"EXCELLENT": "Eccellente",
 			"VERY_GOOD": "Molto buono",
 			"GOOD": "Buono",
-			"AVERAGE": "Medio",
-			"LOW": "Puoi fare di più",
-			"VERY_LOW": "Non ci siamo, è ora di cambiare!"
+			"LOW": "Puoi fare di più"
 		},
 		"TEXT": "Ma dal momento che hai dato un contributo a questo progetto hai già cominciato a fare un altro passo avanti!",
 		"SOLUTIONS": {
 			"TITLE": "Tra le domande che abbiamo posto ve ne erano alcune \"spinose\". Qui puoi trovare le risposte corrette:",
 			"Q_COST": "In base a quanto riportato dall'Indice di costo dell'auto elaborato da Leaseplan il costo mensile medio per il possesso e mantenimento di un'auto privata, a benzina, nel 2016 in Italia è stato di 600 euro al mese. Nel calcolo sono considerati diversi fattori di costo, che variano da paese a paese, come il carburante, il deprezzamento dell'auto, le tasse, l'assicurazione e il mantenimento.",
 			"Q_DEATHS": "Facendo riferimento alle <a href=\"{{ eurostatLink }}\" target=\"_blank\">statistiche Eurostat</a> e ai dati dell'<a href=\"{{ eeaLink }}\" target=\"_blank\">Agenzia Europea per l'Ambiente</a> i decessi dovuti all'inquinamento dell'aria sono circa 10 volte più frequenti di quelli causati dagli incidenti stradali!",
-			"Q_DEATHS_MORE": "Questo non significa naturalmente che la sicurezza stradale non sia un aspetto anch'esso rilevante, ma piuttosto che, pur se non autoevidente, l'inquinamento dell'aria nei nostri territori è una grave minaccia alla nostra salute che la società deve affrontare in maniera decisa. Nel sito web dell'<a href=\"{{ eeaLink }}\" target=\"_blank\">Agenzia Europea per l'Ambiente</a> puoi trovare ulteriori informazioni e dati su questi temi (in tutte le lingue ufficiali dellUnione).",
+			"Q_DEATHS_MORE": "Questo non significa naturalmente che la sicurezza stradale non sia un aspetto anch'esso rilevante, ma piuttosto che, pur se non autoevidente, l'inquinamento dell'aria nei nostri territori è una grave minaccia alla nostra salute che la società deve affrontare in maniera decisa. Nel sito web dell'<a href=\"{{ eeaLink }}\" target=\"_blank\">Agenzia Europea per l'Ambiente</a> puoi trovare ulteriori informazioni e dati su questi temi (in tutte le lingue ufficiali dell'Unione).",
 			"Q_ACTIVITY": "In base a quanto divulgato dall'<a href=\"{{ whoLink }}\" target=\"_blank\">Organizzazione Mondiale della Sanità</a> la quantità di attività fisica moderata raccomandata (e comprendente anche attività del tempo libero come camminare, ballare, fare giardinaggio, passeggiare, nuotare o andare in bicicletta) dovrebbe raggiungere almeno i 150 minuti alla settimana (da praticarsi in sessioni da almeno 10 minuti continuativi).",
 			"Q_ACTIVITY_MORE": "Questo è molto utile in maniera da migliorare la forma cardio-vascolare e muscolare, la salute delle ossa e ridurre il rischio di diverse malattie tra cui la depressione! Tramite pratiche di mobilità attiva puoi mirare a rispettare gli obiettivi dell'OMS, migliorando la tua salute (e allo stesso tempo la slaute dell'ambiente circostante)."
 		},

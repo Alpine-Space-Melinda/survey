@@ -196,7 +196,7 @@ export class AppComponent implements OnInit {
 					label.style.lineHeight = "1.4";
 				}
 				
-				// Add labels over question columns of PSq3
+				// Add labels over question columns of PSq3 and fix visualization for mobile
 				if (question.question.name == "PSq3"){
 					let matrixHeads = question.htmlElement.getElementsByTagName('thead');
 					if (matrixHeads.length > 0){
@@ -222,6 +222,39 @@ export class AppComponent implements OnInit {
 								text.style.textTransform = 'uppercase';
 								text.style.fontSize = '1rem';
 								label.prepend(text);
+							}
+						}
+					}
+					
+					let rows = question.htmlElement.getElementsByTagName('tbody').item(0).getElementsByTagName('tr');
+					for (let i = 0; i < rows.length; i++){
+						let row = <HTMLElement>rows.item(i);
+						row.className = row.className + ' mb-4';
+						
+						let labels = row.getElementsByTagName('td');
+						
+						if (labels.length > 0){
+							labels.item(0).className += ' xs-bg-gray-200 xs-text-bold';
+						}
+						
+						if (labels.length > 1){
+							let captions = labels.item(1).getElementsByTagName('label');
+							if (captions.length > 0){
+								let text = document.createElement('span');
+								text.className = 'd-sm-none';
+								text.innerText = " (ni urejeno)";
+								text.style.marginLeft = '1rem';
+								(<HTMLElement>captions.item(0)).append(text);
+							}
+						}
+						if (labels.length > 2){
+							let captions = labels.item(labels.length - 1).getElementsByTagName('label');
+							if (captions.length > 0){
+								let text = document.createElement('span');
+								text.innerText = " (dobro urejeno)";
+								text.className = 'd-sm-none';
+								text.style.marginLeft = '1rem';
+								(<HTMLElement>captions.item(0)).append(text);
 							}
 						}
 					}
@@ -265,15 +298,10 @@ export class AppComponent implements OnInit {
 				}
 			});
 			
-			// Reset errors for some specific questions to avoid showing them before that the user clicks to go to the next page
-			survey.onValueChanged.add((s, q) => {
-				if (["PS4dot2", "PS4dot10", "PS4dot11", "PS4dot12", "PS4dot14", "PS4dot15"].indexOf(q.name) != -1){
-					q.question.errors = [];
-				}
-			});
-
 			// Create showdown markdown converter
-			var converter = new showdown.Converter();
+			var converter = new showdown.Converter({
+				underline: true
+			});
 			survey
 			    .onTextMarkdown
 			    .add((survey, options) => {
@@ -285,6 +313,13 @@ export class AppComponent implements OnInit {
 			        //set html
 			        options.html = str;
 			    });
+			
+			// Reset errors for some specific questions to avoid showing them before that the user clicks to go to the next page
+			survey.onValueChanged.add((s, q) => {
+				if (["PS4dot2", "PS4dot10", "PS4dot11", "PS4dot12", "PS4dot14", "PS4dot15"].indexOf(q.name) != -1){
+					q.question.errors = [];
+				}
+			});
 
             // Doc: https://surveyjs.io/Examples/Library/?id=survey-customcss&platform=jQuery&theme=default
 			let surveyElementId = "surveyElement";

@@ -1,3 +1,6 @@
+@import 'bootstrap-variables';
+@import '~bootstrap/scss/bootstrap';
+
 main .highlighted-panel {
 	background: white;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -43,5 +46,19 @@ body {
 	
 	input[type="checkbox"]:disabled ~ span {
 	    color: #999999;
+	}
+}
+
+@include media-breakpoint-down(xs) {
+	.xs-text-uppercase {
+		text-transform: uppercase;
+	}
+	
+	.xs-text-bold {
+		font-weight: bold;
+	}
+	
+	.xs-bg-gray-200 {
+		background-color: $gray-200;
 	}
 }

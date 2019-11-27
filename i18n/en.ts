@@ -34,12 +34,9 @@ export const data = {
 		"THANKS": "Thank you for having filled up the survey!",
 		"SCORE": "Your level of Environmental awareness and compliance is",
 		"LEVEL": {
-			"EXCELLENT": "Excellent",
 			"VERY_GOOD": "Very good",
 			"GOOD": "Good",
-			"AVERAGE": "Average",
-			"LOW": "You could improve your score",
-			"VERY_LOW": "It is time to start"
+			"LOW": "You could improve your score"
 		},
 		"TEXT": "But since you contributed to this project you already \"moved forward\"",
 		"SOLUTIONS": {
