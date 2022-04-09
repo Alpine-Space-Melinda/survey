@@ -25,7 +25,7 @@
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "knockout": "^3.4.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "rxjs": "~6.4.0",
     "showdown": "^1.9.1",
     "survey-angular": "^1.1.1",
